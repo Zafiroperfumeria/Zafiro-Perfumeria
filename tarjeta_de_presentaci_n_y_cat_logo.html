@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zafiro Perfumería - Tarjeta & Catálogo</title>
+    <!-- Fuentes de Lujo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Iconos FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sapphire: {
+                            light: '#1e2d42',
+                            DEFAULT: '#0b1a30',
+                            dark: '#050d1a',
+                        },
+                        gold: {
+                            light: '#f3e5c8',
+                            DEFAULT: '#cca43b',
+                            dark: '#a8832a',
+                        },
+                        cream: '#faf8f5',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0b111e;
+            background-image: radial-gradient(circle at 50% 10%, #1a263d 0%, #05080f 100%);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* CONTENEDOR 3D DE LA TARJETA */
+        .card-perspective {
+            perspective: 1200px;
+            width: 340px;
+            height: 500px;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+        }
+
+        .card-perspective.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 
+                        0 0 0 1px rgba(204, 164, 59, 0.25);
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Marcos decorativos dorados */
+        .card-front::after, .card-back::after {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+            border: 1px solid rgba(204, 164, 59, 0.3);
+            border-radius: 18px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .card-front {
+            background: linear-gradient(135deg, #0b1a30 0%, #040a14 100%);
+        }
+
+        .card-back {
+            background-color: var(--cream);
+            background: linear-gradient(135deg, #ffffff 0%, #f5f1e9 100%);
+            transform: rotateY(180deg);
+        }
+
+        /* Animación de flotado para el logo principal */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        .logo-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Estilo personalizado de barra de scroll para el catálogo */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(11, 26, 48, 0.1);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cca43b;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="min-height-screen text-cream flex flex-col items-center py-8 px-4 overflow-x-hidden">
+
+    <div class="text-center mb-6">
+        <p class="text-gold text-xs uppercase tracking-[0.3em] font-semibold mb-1">Tarjeta Digital & Catálogo</p>
+        <h1 class="font-serif text-3xl font-bold text-white tracking-wide">Zafiro Perfumería</h1>
+        <div class="w-12 h-[2px] bg-gold mx-auto mt-2"></div>
+    </div>
+
+    <div class="card-perspective cursor-pointer mb-8" id="card" onclick="flipCard()">
+        <div class="card-inner">
+            
+            <!-- VISTA FRONTAL -->
+            <div class="card-front">
+                <!-- Patrón decorativo de fondo -->
+                <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(#cca43b 1px, transparent 0); background-size: 16px 16px;"></div>
+                
+                <div class="logo-float mt-4 z-10">
+                    <div class="w-40 h-40 rounded-full overflow-hidden border-[3px] border-gold shadow-[0_8px_25px_rgba(204,164,59,0.3)] bg-black flex items-center justify-center">
+                        <img src="Yellow Black Minimalist Perfume Logo.jpg" alt="Zafiro Perfumería Logo" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/200x200/000000/cca43b?text=Zafiro+Logo';">
+                    </div>
+                </div>
+
+                <div class="z-10 w-full px-2">
+                    <div class="inline-flex items-center gap-2 bg-gold/10 border border-gold/30 px-4 py-1.5 rounded-full text-[11px] text-gold-light tracking-widest uppercase mb-4">
+                        <i class="fa-solid fa-gem text-xs"></i> Fragancias Exclusivas
+                    </div>
+                    <h2 class="font-serif text-xl italic text-slate-100 font-medium px-4 mb-2">"Fragancias que dejan huella"</h2>
+                </div>
+
+                <div class="z-10 text-slate-400 text-[11px] tracking-[0.2em] uppercase flex items-center gap-2">
+                    <i class="fa-solid fa-rotate animate-pulse text-gold"></i> Toca para ver datos de contacto
+                </div>
+            </div>
+
+            <!-- VISTA TRASERA -->
+            <div class="card-back text-slate-800">
+                <div class="absolute top-0 left-0 right-0 h-2 bg-gold"></div>
+                
+                <div class="flex flex-col items-center mt-3 z-10">
+                    <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-gold shadow-md bg-black mb-1">
+                        <img src="Yellow Black Minimalist Perfume Logo.jpg" alt="Zafiro Perfumería Logo" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/100x100/000000/cca43b?text=Zafiro+Logo';">
+                    </div>
+                    <span class="font-serif text-md font-bold tracking-wide text-sapphire">Zafiro Perfumería</span>
+                    <span class="text-[9px] text-gold font-bold tracking-widest uppercase">Premium Quality</span>
+                </div>
+
+                <!-- Lista de Contacto -->
+                <div class="w-full px-4 z-10 my-1 space-y-3 text-left">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-sapphire/5 border border-gold/30 flex items-center justify-center text-sapphire text-sm shrink-0">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-[9px] text-slate-400 uppercase tracking-wider font-semibold">Teléfono / WhatsApp</span>
+                            <span class="text-xs font-bold text-slate-800">+57 313 6725316</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-sapphire/5 border border-gold/30 flex items-center justify-center text-sapphire text-sm shrink-0">
+                            <i class="fa-brands fa-instagram"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-[9px] text-slate-400 uppercase tracking-wider font-semibold">Instagram</span>
+                            <span class="text-xs font-bold text-slate-800">@Zafiro.Perfumeria_</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-sapphire/5 border border-gold/30 flex items-center justify-center text-sapphire text-sm shrink-0">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-[9px] text-slate-400 uppercase tracking-wider font-semibold">TikTok</span>
+                            <span class="text-xs font-bold text-slate-800">@Zafiro.Perfumeria_</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="z-10 w-full pb-2">
+                    <p class="text-[11px] font-bold text-sapphire tracking-wider">Calidad, Alta Fijación y Lujo</p>
+                    <div class="text-[10px] text-gold font-semibold uppercase tracking-wider mt-2 flex items-center justify-center gap-1">
+                        <i class="fa-solid fa-rotate"></i> Volver al frente
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="w-full max-w-[360px] flex flex-col gap-3 mb-12">
+        <a href="https://wa.me/573136725316?text=Hola,%20vi%20tu%20tarjeta%20digital.%20Me%20gustar%C3%ADa%20conocer%20la%20variedad%20de%20perfumes%20que%20tienen%20disponibles." target="_blank" class="w-full flex items-center justify-center py-3.5 bg-emerald-600 hover:bg-emerald-500 active:translate-y-[1px] transition-all rounded-xl text-sm font-semibold tracking-wider text-white shadow-lg shadow-emerald-950/40 gap-2">
+            <i class="fa-brands fa-whatsapp text-lg"></i> Escríbenos por WhatsApp
+        </a>
+        <div class="grid grid-cols-2 gap-3">
+            <a href="https://instagram.com/Zafiro.Perfumeria_" target="_blank" class="flex items-center justify-center py-3 bg-gradient-to-r from-amber-500 via-red-500 to-pink-500 hover:opacity-90 active:translate-y-[1px] transition-all rounded-xl text-xs font-semibold tracking-wide text-white shadow-lg gap-1.5">
+                <i class="fa-brands fa-instagram text-base"></i> Instagram
+            </a>
+            <a href="https://www.tiktok.com/@Zafiro.Perfumeria_" target="_blank" class="flex items-center justify-center py-3 bg-black border border-white/10 hover:bg-slate-900 active:translate-y-[1px] transition-all rounded-xl text-xs font-semibold tracking-wide text-white shadow-lg gap-1.5">
+                <i class="fa-brands fa-tiktok text-base"></i> TikTok
+            </a>
+        </div>
+    </div>
+
+    <div class="w-full max-w-[500px] bg-slate-900/60 backdrop-blur-md rounded-3xl p-5 border border-white/10 shadow-2xl">
+        <div class="text-center mb-5">
+            <i class="fa-solid fa-gem text-gold text-2xl mb-2"></i>
+            <h2 class="font-serif text-2xl text-white font-bold">Catálogo de Productos</h2>
+            <p class="text-xs text-slate-400 mt-1">Explora nuestra colección. Toca para consultar existencias.</p>
+        </div>
+
+        <!-- Buscador de Perfumes -->
+        <div class="relative mb-5">
+            <input type="text" id="searchBar" onkeyup="filterPerfumes()" placeholder="Buscar tu perfume favorito..." class="w-full py-2.5 pl-10 pr-4 bg-slate-950/80 border border-white/10 rounded-xl text-sm focus:outline-none focus:border-gold/50 text-slate-200 placeholder-slate-500 transition-colors">
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-500 text-xs"></i>
+        </div>
+
+        <!-- Pestañas del Catálogo (Tabs) -->
+        <div class="flex p-1 bg-slate-950/80 rounded-xl mb-6">
+            <button onclick="switchTab('hombre')" id="tab-hombre" class="flex-1 py-2 text-xs font-bold tracking-wider uppercase rounded-lg transition-all bg-gold text-sapphire shadow">
+                <i class="fa-solid fa-mars mr-1"></i> Hombre
+            </button>
+            <button onclick="switchTab('mujer')" id="tab-mujer" class="flex-1 py-2 text-xs font-bold tracking-wider uppercase rounded-lg transition-all text-slate-400 hover:text-white">
+                <i class="fa-solid fa-venus mr-1"></i> Mujer
+            </button>
+            <button onclick="switchTab('unisex')" id="tab-unisex" class="flex-1 py-2 text-xs font-bold tracking-wider uppercase rounded-lg transition-all text-slate-400 hover:text-white">
+                <i class="fa-solid fa-genderless mr-1"></i> Unisex
+            </button>
+        </div>
+
+        <!-- Contenedores de Listados -->
+        <!-- CATEGORÍA: HOMBRE -->
+        <div id="cat-hombre" class="perfume-category space-y-4 max-h-[460px] overflow-y-auto pr-1 custom-scrollbar">
+            <!-- Davidoff Cool Water -->
+            <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-900 to-sky-950 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                    <i class="fa-solid fa-wind text-2xl text-sky-400"></i>
+                </div>
+                <div class="flex-1 text-left min-w-0">
+                    <span class="text-[9px] text-gold font-bold uppercase tracking-wider block">Davidoff</span>
+                    <h3 class="text-sm font-bold text-white leading-tight truncate">Cool Water</h3>
+                    <p class="text-xs text-slate-400 leading-normal mt-0.5">Brisa marina, fresca y limpia. Ideal para el día a día.</p>
+                </div>
+                <button onclick="orderPerfume('Davidoff', 'Cool Water', 'Hombre')" class="w-9 h-9 rounded-xl bg-gold/10 text-gold hover:bg-gold hover:text-sapphire flex items-center justify-center transition-colors shadow shrink-0">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </button>
+            </div>
+
+            <!-- King of Seduction -->
+            <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-slate-800 to-slate-950 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                    <i class="fa-solid fa-water text-2xl text-blue-400"></i>
+                </div>
+                <div class="flex-1 text-left min-w-0">
+                    <span class="text-[9px] text-gold font-bold uppercase tracking-wider block">Antonio Banderas</span>
+                    <h3 class="text-sm font-bold text-white leading-tight truncate">King of Seduction</h3>
+                    <p class="text-xs text-slate-400 leading-normal mt-0.5">Cítrico, marino y sumamente seductor.</p>
+                </div>
+                <button onclick="orderPerfume('Antonio Banderas', 'King of Seduction', 'Hombre')" class="w-9 h-9 rounded-xl bg-gold/10 text-gold hover:bg-gold hover:text-sapphire flex items-center justify-center transition-colors shadow shrink-0">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Hugo XY -->
+            <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-green-950 to-emerald-950 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                    <i class="fa-solid fa-leaf text-2xl text-emerald-400"></i>
+                </div>
+                <div class="flex-1 text-left min-w-0">
+                    <span class="text-[9px] text-gold font-bold uppercase tracking-wider block">Hugo Boss</span>
+                    <h3 class="text-sm font-bold text-white leading-tight truncate">Hugo XY</h3>
+                    <p class="text-xs text-slate-400 leading-normal mt-0.5">Aroma verde, moderno y muy dinámico.</p>
+                </div>
+                <button onclick="orderPerfume('Hugo Boss', 'Hugo XY', 'Hombre')" class="w-9 h-9 rounded-xl bg-gold/10 text-gold hover:bg-gold hover:text-sapphire flex items-center justify-center transition-colors shadow shrink-0">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </button>
+            </div>
+
+            <!-- The Secret -->
+            <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-950 to-neutral-950 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                    <i class="fa-solid fa-user-secret text-2xl text-purple-400"></i>
+                </div>
+                <div class="flex-1 text-left min-w-0">
+                    <span class="text-[9px] text-gold font-bold uppercase tracking-wider block">Antonio Banderas</span>
+                    <h3 class="text-sm font-bold text-white leading-tight truncate">The Secret</h3>
+                    <p class="text-xs text-slate-400 leading-normal mt-0.5">Misterioso, sensual y con un toque de cuero.</p>
+                </div>
+                <button onclick="orderPerfume('Antonio Banderas', 'The Secret', 'Hombre')" class="w-9 h-9 rounded-xl bg-gold/10 text-gold hover:bg-gold hover:text-sapphire flex items-center justify-center transition-colors shadow shrink-0">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Toy Boy -->
+            <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-neutral-800 to-neutral-950 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                    <i class="fa-solid fa-cubes text-2xl text-stone-300"></i>
+                </div>
+                <div class="flex-1 text-left min-w-0">
+                    <span class="text-[9px] text-gold font-bold uppercase tracking-wider block">Moschino</span>
+                    <h3 class="text-sm font-bold text-white leading-tight truncate">Toy Boy</h3>
+                    <p class="text-xs text-slate-400 leading-normal mt-0.5">Una fragancia moderna, diferente y picante que destaca por su originalidad.</p>
+                </div>
+                <button onclick="orderPerfume('Moschino', 'Toy Boy', 'Hombre')" class="w-9 h-9 rounded-xl bg-gold/10 text-gold hover:bg-gold hover:text-sapphire flex items-center justify-center transition-colors shadow shrink-0">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Ferrari Black -->
+            <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-neutral-900 to-black flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                    <i class="fa-solid fa-car-side text-2xl text-red-500"></i>
+                </div>
+                <div class="flex-1 text-left min-w-0">
+                    <span class="text-[9px] text-gold font-bold uppercase tracking-wider block">Ferrari</span>
+                    <h3 class="text-sm font-bold text-white leading-tight truncate">Ferrari Black</h3>
+                    <p class="text-xs text-slate-400 leading-normal mt-0.5">Un perfume clásico, frutal y dulce, ideal para el uso diario juvenil.</p>
+                </div>
+                <button onclick="orderPerfume('Ferrari', 'Ferrari Black', 'Hombre')" class="w-9 h-9 rounded-xl bg-gold/10 text-gold hover:bg-gold hover:text-sapphire flex items-center justify-center transition-colors shadow shrink-0">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Mandarin sky -->
+            <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-900 to-orange-950 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                    <i class="fa-solid fa-cloud-sun text-2xl text-amber-500"></i>
+                </div>
+                <div class="flex-1 text-left min-w-0">
+                    <span class="text-[9px] text-gold font-bold uppercase tracking-wider block">Jean Paul Gaultier</span>
+                    <h3 class="text-sm font-bold text-white leading-tight truncate">Mandarin Sky</h3>
+                    <p class="text-xs text-slate-400 leading-normal mt-0.5">Aroma cítrico y muy fresco con un toque amaderado tropical.</p>
+                </div>
+                <button onclick="orderPerfume('Jean Paul Gaultier', 'Mandarin Sky', 'Hombre')" class="w-9 h-9 rounded-xl bg-gold/10 text-gold hover:bg-gold hover:text-sapphire flex items-center justify-center transition-colors shadow shrink-0">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Althaïr -->
+            <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-950 to-orange-900 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                    <i class="fa-solid fa-medal text-2xl text-gold"></i>
+                </div>
+                <div class="flex-1 text-left min-w-0">
+                    <span class="text-[9px] text-gold font-bold uppercase tracking-wider block">Parfums de Marly</span>
+                    <h3 class="text-sm font-bold text-white leading-tight truncate">Althaïr</h3>
+                    <p class="text-xs text-slate-400 leading-normal mt-0.5">Perfume de lujo con un aroma a vainilla cremosa, cálida y muy elegante.</p>
+                </div>
+                <button onclick="orderPerfume('Parfums de Marly', 'Althaïr', 'Hombre')" class="w-9 h-9 rounded-xl bg-gold/10 text-gold hover:bg-gold hover:text-sapphire flex items-center justify-center transition-colors shadow shrink-0">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Lacoste Essential -->
+            <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-green-900 to-stone-900 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                    <i class="fa-solid fa-spa text-2xl text-green-400"></i>
+                </div>
+                <div class="flex-1 text-left min-w-0">
+                    <span class="text-[9px] text-gold font-bold uppercase tracking-wider block">Lacoste</span>
+                    <h3 class="text-sm font-bold text-white leading-tight truncate">Lacoste Essential</h3>
+                    <p class="text-xs text-slate-400 leading-normal mt-0.5">Fresco, relajado y con aroma a limpio duradero.</p>
+                </div>
+                <button onclick="orderPerfume('Lacoste', 'Lacoste Essential', 'Hombre')" class="w-9 h-9 rounded-xl bg-gold/10 text-gold hover:bg-gold hover:text-sapphire flex items-center justify-center transition-colors shadow shrink-0">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Invictus Victory -->
+            <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-950 to-neutral-900 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                    <i class="fa-solid fa-trophy text-2xl text-yellow-500"></i>
+                </div>
+                <div class="flex-1 text-left min-w-0">
+                    <span class="text-[9px] text-gold font-bold uppercase tracking-wider block">Paco Rabanne</span>
+                    <h3 class="text-sm font-bold text-white leading-tight truncate">Invictus Victory</h3>
+                    <p class="text-xs text-slate-400 leading-normal mt-0.5">Potente, nocturno y con notas de vainilla dulce.</p>
+                </div>
+                <button onclick="orderPerfume('Paco Rabanne', 'Invictus Victory', 'Hombre')" class="w-9 h-9 rounded-xl bg-gold/10 text-gold hover:bg-gold hover:text-sapphire flex items-center justify-center transition-colors shadow shrink-0">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </button>
+            </div>
+
+            <!-- One Million Elixir -->
+            <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-900 to-black flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                    <i class="fa-solid fa-cubes-stacked text-2xl text-gold"></i>
+                </div>
+                <div class="flex-1 text-left min-w-0">
+                    <span class="text-[9px] text-gold font-bold uppercase tracking-wider block">Paco Rabanne</span>
+                    <h3 class="text-sm font-bold text-white leading-tight truncate">One Million Elixir</h3>
+                    <p class="text-xs text-slate-400 leading-normal mt-0.5">Intenso, dulce y perfecto para destacar en la noche.</p>
+                </div>
+                <button onclick="orderPerfume('Paco Rabanne', 'One Million Elixir', 'Hombre')" class="w-9 h-9 rounded-xl bg-gold/10 text-gold hover:bg-gold hover:text-sapphire flex items-center justify-center transition-colors shadow shrink-0">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- CATEGORÍA: MUJER -->
+        <div id="cat-mujer" class="perfume-category space-y-4 max-h-[460px] overflow-y-auto pr-1 hidden custom-scrollbar">
+            <!-- Aqua Kiss -->
+            <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-teal-900 to-cyan-950 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                    <i class="fa-solid fa-droplet text-2xl text-cyan-400"></i>
+                </div>
+                <div class="flex-1 text-left min-w-0">
+                    <span class="text-[9px] text-gold font-bold uppercase tracking-wider block">Victoria's Secret</span>
+                    <h3 class="text-sm font-bold text-white leading-tight truncate">Aqua Kiss</h3>
+                    <p class="text-xs text-slate-400 leading-normal mt-0.5">Brisa marina y floral, súper fresca para después del baño.</p>
+                </div>
+                <button onclick="orderPerfume('Victoria\'s Secret', 'Aqua Kiss', 'Mujer')" class="w-9 h-9 rounded-xl bg-gold/10 text-gold hover:bg-gold hover:text-sapphire flex items-center justify-center transition-colors shadow shrink-0">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </button>
+            </div>
+
+            <!-- L'Imperatrice -->
+            <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-pink-900 to-rose-950 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                    <i class="fa-solid fa-apple-whole text-2xl text-rose-400"></i>
+                </div>
+                <div class="flex-1 text-left min-w-0">
+                    <span class="text-[9px] text-gold font-bold uppercase tracking-wider block">Dolce & Gabbana</span>
+                    <h3 class="text-sm font-bold text-white leading-tight truncate">L'Imperatrice</h3>
+                    <p class="text-xs text-slate-400 leading-normal mt-0.5">Frutal y vibrante, resalta por su aroma a sandía y kiwi.</p>
+                </div>
+                <button onclick="orderPerfume('Dolce & Gabbana', 'L\'Imperatrice', 'Mujer')" class="w-9 h-9 rounded-xl bg-gold/10 text-gold hover:bg-gold hover:text-sapphire flex items-center justify-center transition-colors shadow shrink-0">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Cherry in the Air -->
+            <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-red-900 to-pink-950 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                    <i class="fa-solid fa-cherries text-2xl text-red-400">🍒</i>
+                </div>
+                <div class="flex-1 text-left min-w-0">
+                    <span class="text-[9px] text-gold font-bold uppercase tracking-wider block">Escada</span>
+                    <h3 class="text-sm font-bold text-white leading-tight truncate">Cherry in the Air</h3>
+                    <p class="text-xs text-slate-400 leading-normal mt-0.5">Dulce y coqueta, con un delicioso olor a cereza.</p>
+                </div>
+                <button onclick="orderPerfume('Escada', 'Cherry in the Air', 'Mujer')" class="w-9 h-9 rounded-xl bg-gold/10 text-gold hover:bg-gold hover:text-sapphire flex items-center justify-center transition-colors shadow shrink-0">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </button>
+            </div>
+
+            <!-- 360 Coral -->
+            <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-orange-900 to-rose-950 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                    <i class="fa-solid fa-sun text-2xl text-orange-400"></i>
+                </div>
+                <div class="flex-1 text-left min-w-0">
+                    <span class="text-[9px] text-gold font-bold uppercase tracking-wider block">Perry Ellis</span>
+                    <h3 class="text-sm font-bold text-white leading-tight truncate">360° Coral</h3>
+                    <p class="text-xs text-slate-400 leading-normal mt-0.5">Chispeante, alegre y sutilmente dulce.</p>
+                </div>
+                <button onclick="orderPerfume('Perry Ellis', '360° Coral', 'Mujer')" class="w-9 h-9 rounded-xl bg-gold/10 text-gold hover:bg-gold hover:text-sapphire flex items-center justify-center transition-colors shadow shrink-0">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Yum Yum -->
+            <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-fuchsia-900 to-purple-950 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                    <i class="fa-solid fa-ice-cream text-2xl text-fuchsia-300"></i>
+                </div>
+                <div class="flex-1 text-left min-w-0">
+                    <span class="text-[9px] text-gold font-bold uppercase tracking-wider block">Armaf</span>
+                    <h3 class="text-sm font-bold text-white leading-tight truncate">Yum Yum (Yom Vim)</h3>
+                    <p class="text-xs text-slate-400 leading-normal mt-0.5">Un aroma dulce, alegre y súper femenino, perfecto para el día a día.</p>
+                </div>
+                <button onclick="orderPerfume('Armaf', 'Yum Yum', 'Mujer')" class="w-9 h-9 rounded-xl bg-gold/10 text-gold hover:bg-gold hover:text-sapphire flex items-center justify-center transition-colors shadow shrink-0">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Olympéa -->
+            <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-900 to-rose-950 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                    <i class="fa-solid fa-crown text-2xl text-rose-300"></i>
+                </div>
+                <div class="flex-1 text-left min-w-0">
+                    <span class="text-[9px] text-gold font-bold uppercase tracking-wider block">Paco Rabanne</span>
+                    <h3 class="text-sm font-bold text-white leading-tight truncate">Olympéa</h3>
+                    <p class="text-xs text-slate-400 leading-normal mt-0.5">Mezcla única de vainilla salada y flores; un perfume sumamente seductor.</p>
+                </div>
+                <button onclick="orderPerfume('Paco Rabanne', 'Olympéa', 'Mujer')" class="w-9 h-9 rounded-xl bg-gold/10 text-gold hover:bg-gold hover:text-sapphire flex items-center justify-center transition-colors shadow shrink-0">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Paris Hilton -->
+            <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-pink-800 to-pink-950 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                    <i class="fa-solid fa-star text-2xl text-pink-300"></i>
+                </div>
+                <div class="flex-1 text-left min-w-0">
+                    <span class="text-[9px] text-gold font-bold uppercase tracking-wider block">Paris Hilton</span>
+                    <h3 class="text-sm font-bold text-white leading-tight truncate">Paris Hilton</h3>
+                    <p class="text-xs text-slate-400 leading-normal mt-0.5">El clásico frutal y dulce por excelencia, muy coqueto y fresco.</p>
+                </div>
+                <button onclick="orderPerfume('Paris Hilton', 'Paris Hilton', 'Mujer')" class="w-9 h-9 rounded-xl bg-gold/10 text-gold hover:bg-gold hover:text-sapphire flex items-center justify-center transition-colors shadow shrink-0">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Toy 2 Bubble Gum -->
+            <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-pink-700 to-rose-900 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                    <i class="fa-solid fa-candy-cane text-2xl text-pink-300">🍬</i>
+                </div>
+                <div class="flex-1 text-left min-w-0">
+                    <span class="text-[9px] text-gold font-bold uppercase tracking-wider block">Moschino</span>
+                    <h3 class="text-sm font-bold text-white leading-tight truncate">Toy 2 Bubble Gum</h3>
+                    <p class="text-xs text-slate-400 leading-normal mt-0.5">Una fragancia divertida y juvenil con un delicioso olor a chicle de fresa.</p>
+                </div>
+                <button onclick="orderPerfume('Moschino', 'Toy 2 Bubble Gum', 'Mujer')" class="w-9 h-9 rounded-xl bg-gold/10 text-gold hover:bg-gold hover:text-sapphire flex items-center justify-center transition-colors shadow shrink-0">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- CATEGORÍA: UNISEX -->
+        <div id="cat-unisex" class="perfume-category space-y-4 max-h-[460px] overflow-y-auto pr-1 hidden custom-scrollbar">
+            <!-- Bond No. 9 -->
+            <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-700 to-yellow-950 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                    <i class="fa-solid fa-certificate text-2xl text-yellow-400"></i>
+                </div>
+                <div class="flex-1 text-left min-w-0">
+                    <span class="text-[9px] text-gold font-bold uppercase tracking-wider block">Bond No. 9</span>
+                    <h3 class="text-sm font-bold text-white leading-tight truncate">Bond No. 9</h3>
+                    <p class="text-xs text-slate-400 leading-normal mt-0.5">Sofisticado, moderno y con mucho estilo para ambos.</p>
+                </div>
+                <button onclick="orderPerfume('Bond No. 9', 'Bond No. 9', 'Unisex')" class="w-9 h-9 rounded-xl bg-gold/10 text-gold hover:bg-gold hover:text-sapphire flex items-center justify-center transition-colors shadow shrink-0">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Andromeda -->
+            <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-950 to-neutral-900 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                    <i class="fa-solid fa-user-astronaut text-2xl text-indigo-400"></i>
+                </div>
+                <div class="flex-1 text-left min-w-0">
+                    <span class="text-[9px] text-gold font-bold uppercase tracking-wider block">Tiziana Terenzi</span>
+                    <h3 class="text-sm font-bold text-white leading-tight truncate">Andromeda</h3>
+                    <p class="text-xs text-slate-400 leading-normal mt-0.5">Aroma verde, moderno y muy dinámico.</p>
+                </div>
+                <button onclick="orderPerfume('Tiziana Terenzi', 'Andromeda', 'Unisex')" class="w-9 h-9 rounded-xl bg-gold/10 text-gold hover:bg-gold hover:text-sapphire flex items-center justify-center transition-colors shadow shrink-0">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Cassiopea -->
+            <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-orange-950 to-amber-900 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                    <i class="fa-solid fa-shapes text-2xl text-amber-400"></i>
+                </div>
+                <div class="flex-1 text-left min-w-0">
+                    <span class="text-[9px] text-gold font-bold uppercase tracking-wider block">Tiziana Terenzi</span>
+                    <h3 class="text-sm font-bold text-white leading-tight truncate">Cassiopea</h3>
+                    <p class="text-xs text-slate-400 leading-normal mt-0.5">Aroma exótico, dulce y cremoso a base de maracuyá.</p>
+                </div>
+                <button onclick="orderPerfume('Tiziana Terenzi', 'Cassiopea', 'Unisex')" class="w-9 h-9 rounded-xl bg-gold/10 text-gold hover:bg-gold hover:text-sapphire flex items-center justify-center transition-colors shadow shrink-0">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Ombre Nomade -->
+            <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-950 to-neutral-950 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                    <i class="fa-solid fa-sun-plant-wilt text-2xl text-yellow-600"></i>
+                </div>
+                <div class="flex-1 text-left min-w-0">
+                    <span class="text-[9px] text-gold font-bold uppercase tracking-wider block">Louis Vuitton</span>
+                    <h3 class="text-sm font-bold text-white leading-tight truncate">Ombre Nomade</h3>
+                    <p class="text-xs text-slate-400 leading-normal mt-0.5">Místico y ultra-exclusivo a base de madera de oud, cuero y rosa silvestre.</p>
+                </div>
+                <button onclick="orderPerfume('Louis Vuitton', 'Ombre Nomade', 'Unisex')" class="w-9 h-9 rounded-xl bg-gold/10 text-gold hover:bg-gold hover:text-sapphire flex items-center justify-center transition-colors shadow shrink-0">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Métodos de pago e información adicional del catálogo -->
+        <div class="mt-6 pt-5 border-t border-white/10 text-left text-xs text-slate-400">
+            <h4 class="font-bold text-white mb-2 uppercase tracking-wider flex items-center gap-1.5">
+                <i class="fa-solid fa-wallet text-gold"></i> Métodos de Pago
+            </h4>
+            <div class="flex flex-wrap gap-2 mb-3">
+                <span class="px-3 py-1 bg-slate-950/80 rounded-lg border border-white/5 text-slate-300">
+                    <i class="fa-solid fa-building-columns text-emerald-500 mr-1"></i> Transferencia bancaria
+                </span>
+                <span class="px-3 py-1 bg-slate-950/80 rounded-lg border border-white/5 text-slate-300">
+                    <i class="fa-solid fa-money-bill-wave text-emerald-500 mr-1"></i> Efectivo
+                </span>
+            </div>
+            <p class="text-[11px] leading-relaxed italic">Calidad, alta fijación y los mejores aromas a un solo clic de distancia.</p>
+        </div>
+    </div>
+
+    <!-- Footnote -->
+    <div class="mt-12 text-center text-[10px] text-slate-500 tracking-wider">
+        © 2026 Zafiro Perfumería. Todos los derechos reservados.
+    </div>
+
+    <script>
+        // Función para rotar la tarjeta 3D
+        function flipCard() {
+            const card = document.getElementById('card');
+            card.classList.toggle('flipped');
+        }
+
+        // Control de navegación de pestañas (Tabs)
+        function switchTab(tabName) {
+            // Ocultar todas las categorías
+            const categories = document.querySelectorAll('.perfume-category');
+            categories.forEach(cat => cat.classList.add('hidden'));
+
+            // Remover estilos activos de todos los botones de pestañas
+            const tabs = ['hombre', 'mujer', 'unisex'];
+            tabs.forEach(tab => {
+                const btn = document.getElementById(`tab-${tab}`);
+                btn.className = "flex-1 py-2 text-xs font-bold tracking-wider uppercase rounded-lg transition-all text-slate-400 hover:text-white";
+            });
+
+            // Mostrar categoría seleccionada
+            document.getElementById(`cat-${tabName}`).classList.remove('hidden');
+
+            // Aplicar estilo activo a pestaña seleccionada
+            const activeBtn = document.getElementById(`tab-${tabName}`);
+            activeBtn.className = "flex-1 py-2 text-xs font-bold tracking-wider uppercase rounded-lg transition-all bg-gold text-sapphire shadow";
+        }
+
+        // Filtro buscador en tiempo real
+        function filterPerfumes() {
+            const query = document.getElementById('searchBar').value.toLowerCase();
+            const cards = document.querySelectorAll('.perfume-card');
+
+            cards.forEach(card => {
+                const title = card.querySelector('h3').innerText.toLowerCase();
+                const brand = card.querySelector('span').innerText.toLowerCase();
+                const desc = card.querySelector('p').innerText.toLowerCase();
+
+                if (title.includes(query) || brand.includes(query) || desc.includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Acción de cotización inteligente directa por WhatsApp
+        function orderPerfume(brand, name, category) {
+            const phoneNumber = "573136725316";
+            const baseMessage = `Hola Zafiro Perfumería! 💎 Vi tu catálogo digital y me gustaría solicitar información o consultar disponibilidad del perfume *${brand} - ${name}* (${category}). ✨`;
+            const encodedMessage = encodeURIComponent(baseMessage);
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            
+            // Redirección directa a WhatsApp
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
