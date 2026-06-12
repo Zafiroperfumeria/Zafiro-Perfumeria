@@ -145,9 +145,65 @@
                 <!-- Patrón decorativo de fondo -->
                 <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(#cca43b 1px, transparent 0); background-size: 16px 16px;"></div>
                 
+                <!-- Contenedor del Logo con Fallback Inteligente -->
                 <div class="logo-float mt-4 z-10">
-                    <div class="w-40 h-40 rounded-full overflow-hidden border-[3px] border-gold shadow-[0_8px_25px_rgba(204,164,59,0.3)] bg-black flex items-center justify-center">
-                        <img src="Yellow Black Minimalist Perfume Logo.jpg" alt="Zafiro Perfumería Logo" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/200x200/000000/cca43b?text=Zafiro+Logo';">
+                    <div class="w-40 h-40 rounded-full overflow-hidden border-[3px] border-gold shadow-[0_8px_25px_rgba(204,164,59,0.3)] bg-black flex items-center justify-center relative">
+                        
+                        <!-- LOGO VECTORIAL (SVG idéntico al logo original del usuario) -->
+                        <svg id="svg-logo-front" viewBox="0 0 500 500" class="absolute inset-0 w-full h-full p-2 z-0">
+                            <!-- Fondo Negro -->
+                            <rect width="100%" height="100%" fill="#000000"/>
+                            <!-- Círculos de guía dorados finos -->
+                            <circle cx="250" cy="250" r="235" fill="none" stroke="#cca43b" stroke-width="1.5" opacity="0.4"/>
+                            
+                            <!-- Arco dorado dividido estilo corona del logo original -->
+                            <path d="M 125 210 A 160 160 0 1 1 375 210" fill="none" stroke="#cca43b" stroke-width="4.5"/>
+                            <path d="M 375 290 A 160 160 0 1 1 125 290" fill="none" stroke="#cca43b" stroke-width="4.5"/>
+                            
+                            <!-- Rama izquierda de hojas -->
+                            <g stroke="#cca43b" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M 115 250 Q 80 250 60 240" /> 
+                                <path d="M 98 250 Q 88 215 98 200 Q 108 215 98 250" fill="#cca43b" fill-opacity="0.3"/> 
+                                <path d="M 83 245 Q 68 220 78 210 Q 88 225 83 245" fill="#cca43b" fill-opacity="0.3"/> 
+                                <path d="M 98 250 Q 88 285 98 300 Q 108 285 98 250" fill="#cca43b" fill-opacity="0.3"/> 
+                                <path d="M 83 245 Q 68 270 78 280 Q 88 265 83 245" fill="#cca43b" fill-opacity="0.3"/> 
+                            </g>
+                            
+                            <!-- Rama derecha de hojas -->
+                            <g stroke="#cca43b" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M 385 250 Q 420 250 440 240" /> 
+                                <path d="M 402 250 Q 412 215 402 200 Q 392 215 402 250" fill="#cca43b" fill-opacity="0.3"/> 
+                                <path d="M 417 245 Q 432 220 422 210 Q 412 225 417 245" fill="#cca43b" fill-opacity="0.3"/> 
+                                <path d="M 402 250 Q 412 285 402 300 Q 392 285 402 250" fill="#cca43b" fill-opacity="0.3"/> 
+                                <path d="M 417 245 Q 432 270 422 280 Q 412 265 417 245" fill="#cca43b" fill-opacity="0.3"/> 
+                            </g>
+                            
+                            <!-- Botella de Perfume Central -->
+                            <g stroke="#cca43b" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <!-- Cuerpo Exterior de Vidrio -->
+                                <rect x="190" y="165" width="120" height="115" rx="8" />
+                                <!-- Capa interna de líquido -->
+                                <rect x="202" y="177" width="96" height="91" rx="4" opacity="0.6" stroke-width="2" />
+                                <!-- Cuello/Atomizador -->
+                                <rect x="236" y="147" width="28" height="18" rx="2" fill="#cca43b" />
+                                <rect x="245" y="138" width="10" height="9" fill="#cca43b" stroke-width="2" />
+                                <!-- Tapa redonda premium -->
+                                <ellipse cx="250" cy="118" rx="24" ry="18" fill="#cca43b" />
+                                <!-- Tubo interior de succión -->
+                                <line x1="250" y1="165" x2="250" y2="255" stroke-width="3.5" opacity="0.8" />
+                            </g>
+                            
+                            <!-- Chispas/Brillos de lujo -->
+                            <path d="M 155 180 Q 165 180 165 170 Q 165 180 175 180 Q 165 180 165 190 Q 165 180 155 180 Z" fill="#cca43b" />
+                            <path d="M 325 240 Q 335 240 335 230 Q 335 240 345 240 Q 335 240 335 250 Q 335 240 325 240 Z" fill="#cca43b" />
+                            
+                            <!-- Textos del Logo de Perfumería -->
+                            <text x="250" y="375" font-family="'Playfair Display', serif" font-size="44" font-weight="bold" fill="#cca43b" text-anchor="middle">Zafiro</text>
+                            <text x="250" y="425" font-family="'Montserrat', sans-serif" font-size="28" font-weight="500" letter-spacing="1" fill="#cca43b" text-anchor="middle">Perfumeria</text>
+                        </svg>
+
+                        <!-- IMAGEN REAL (Se superpone dinámicamente si el archivo físico existe en la misma carpeta) -->
+                        <img src="Yellow Black Minimalist Perfume Logo.jpg" alt="Zafiro Perfumería Logo" class="absolute inset-0 w-full h-full object-cover z-10 opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); document.getElementById('svg-logo-front').classList.add('hidden');" onerror="this.style.display='none';">
                     </div>
                 </div>
 
@@ -155,6 +211,7 @@
                     <div class="inline-flex items-center gap-2 bg-gold/10 border border-gold/30 px-4 py-1.5 rounded-full text-[11px] text-gold-light tracking-widest uppercase mb-4">
                         <i class="fa-solid fa-gem text-xs"></i> Fragancias Exclusivas
                     </div>
+                    <!-- Eslogan del usuario integrado -->
                     <h2 class="font-serif text-xl italic text-slate-100 font-medium px-4 mb-2">"Fragancias que dejan huella"</h2>
                 </div>
 
@@ -168,14 +225,31 @@
                 <div class="absolute top-0 left-0 right-0 h-2 bg-gold"></div>
                 
                 <div class="flex flex-col items-center mt-3 z-10">
-                    <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-gold shadow-md bg-black mb-1">
-                        <img src="Yellow Black Minimalist Perfume Logo.jpg" alt="Zafiro Perfumería Logo" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/100x100/000000/cca43b?text=Zafiro+Logo';">
+                    <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-gold shadow-md bg-black mb-1 flex items-center justify-center relative">
+                        <!-- LOGO VECTORIAL EN MINIATURA PARA EL REVERSO -->
+                        <svg id="svg-logo-back" viewBox="0 0 500 500" class="absolute inset-0 w-full h-full p-1 z-0">
+                            <!-- Fondo Negro -->
+                            <rect width="100%" height="100%" fill="#000000"/>
+                            <!-- Arco dorado dividido -->
+                            <path d="M 125 210 A 160 160 0 1 1 375 210" fill="none" stroke="#cca43b" stroke-width="4.5"/>
+                            <path d="M 375 290 A 160 160 0 1 1 125 290" fill="none" stroke="#cca43b" stroke-width="4.5"/>
+                            <!-- Botella simplificada -->
+                            <g stroke="#cca43b" stroke-width="6" fill="none">
+                                <rect x="190" y="165" width="120" height="115" rx="8" />
+                                <rect x="236" y="147" width="28" height="18" rx="2" fill="#cca43b" />
+                                <ellipse cx="250" cy="118" rx="24" ry="18" fill="#cca43b" />
+                            </g>
+                            <!-- Texto -->
+                            <text x="250" y="380" font-family="'Playfair Display', serif" font-size="52" font-weight="bold" fill="#cca43b" text-anchor="middle">Zafiro</text>
+                        </svg>
+
+                        <!-- IMAGEN REAL EN MINIATURA (Con fallback automático) -->
+                        <img src="Yellow Black Minimalist Perfume Logo.jpg" alt="Zafiro Perfumería Logo" class="absolute inset-0 w-full h-full object-cover z-10 opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); document.getElementById('svg-logo-back').classList.add('hidden');" onerror="this.style.display='none';">
                     </div>
                     <span class="font-serif text-md font-bold tracking-wide text-sapphire">Zafiro Perfumería</span>
                     <span class="text-[9px] text-gold font-bold tracking-widest uppercase">Premium Quality</span>
                 </div>
 
-                <!-- Lista de Contacto -->
                 <div class="w-full px-4 z-10 my-1 space-y-3 text-left">
                     <div class="flex items-center gap-3">
                         <div class="w-9 h-9 rounded-full bg-sapphire/5 border border-gold/30 flex items-center justify-center text-sapphire text-sm shrink-0">
@@ -477,7 +551,7 @@
 
             <!-- 360 Coral -->
             <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
-                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-orange-900 to-rose-950 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-orange-950 to-rose-950 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
                     <i class="fa-solid fa-sun text-2xl text-orange-400"></i>
                 </div>
                 <div class="flex-1 text-left min-w-0">
