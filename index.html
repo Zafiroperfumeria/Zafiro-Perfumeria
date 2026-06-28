@@ -116,7 +116,7 @@
             animation: float 4s ease-in-out infinite;
         }
 
-        /* Estilo personalizado de barra de scroll para el catálogo */
+        /* Estilo de scroll decorativo de lujo */
         .custom-scrollbar::-webkit-scrollbar {
             width: 6px;
         }
@@ -145,18 +145,18 @@
                 <!-- Patrón decorativo de fondo -->
                 <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(#cca43b 1px, transparent 0); background-size: 16px 16px;"></div>
                 
-                <!-- Contenedor del Logo con Fallback Inteligente -->
+                <!-- Contenedor del Logo con Fallback Inteligente (SVG que dibuja tu logo real si la imagen no se encuentra) -->
                 <div class="logo-float mt-4 z-10">
                     <div class="w-40 h-40 rounded-full overflow-hidden border-[3px] border-gold shadow-[0_8px_25px_rgba(204,164,59,0.3)] bg-black flex items-center justify-center relative">
                         
-                        <!-- LOGO VECTORIAL (SVG idéntico al logo original del usuario) -->
+                        <!-- LOGO VECTORIAL (Idéntico a tu logo real) -->
                         <svg id="svg-logo-front" viewBox="0 0 500 500" class="absolute inset-0 w-full h-full p-2 z-0">
                             <!-- Fondo Negro -->
                             <rect width="100%" height="100%" fill="#000000"/>
                             <!-- Círculos de guía dorados finos -->
                             <circle cx="250" cy="250" r="235" fill="none" stroke="#cca43b" stroke-width="1.5" opacity="0.4"/>
                             
-                            <!-- Arco dorado dividido estilo corona del logo original -->
+                            <!-- Arco de corona de flores/hojas dividido -->
                             <path d="M 125 210 A 160 160 0 1 1 375 210" fill="none" stroke="#cca43b" stroke-width="4.5"/>
                             <path d="M 375 290 A 160 160 0 1 1 125 290" fill="none" stroke="#cca43b" stroke-width="4.5"/>
                             
@@ -193,7 +193,7 @@
                                 <line x1="250" y1="165" x2="250" y2="255" stroke-width="3.5" opacity="0.8" />
                             </g>
                             
-                            <!-- Chispas/Brillos de lujo -->
+                            <!-- Destellos/Estrellas dorados -->
                             <path d="M 155 180 Q 165 180 165 170 Q 165 180 175 180 Q 165 180 165 190 Q 165 180 155 180 Z" fill="#cca43b" />
                             <path d="M 325 240 Q 335 240 335 230 Q 335 240 345 240 Q 335 240 335 250 Q 335 240 325 240 Z" fill="#cca43b" />
                             
@@ -202,7 +202,7 @@
                             <text x="250" y="425" font-family="'Montserrat', sans-serif" font-size="28" font-weight="500" letter-spacing="1" fill="#cca43b" text-anchor="middle">Perfumeria</text>
                         </svg>
 
-                        <!-- IMAGEN REAL (Se superpone dinámicamente si el archivo físico existe en la misma carpeta) -->
+                        <!-- IMAGEN REAL DEL LOGO (Se muestra automáticamente si la colocas en el mismo directorio del HTML) -->
                         <img src="Yellow Black Minimalist Perfume Logo.jpg" alt="Zafiro Perfumería Logo" class="absolute inset-0 w-full h-full object-cover z-10 opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); document.getElementById('svg-logo-front').classList.add('hidden');" onerror="this.style.display='none';">
                     </div>
                 </div>
@@ -211,7 +211,7 @@
                     <div class="inline-flex items-center gap-2 bg-gold/10 border border-gold/30 px-4 py-1.5 rounded-full text-[11px] text-gold-light tracking-widest uppercase mb-4">
                         <i class="fa-solid fa-gem text-xs"></i> Fragancias Exclusivas
                     </div>
-                    <!-- Eslogan del usuario integrado -->
+                    <!-- Eslogan oficial del usuario -->
                     <h2 class="font-serif text-xl italic text-slate-100 font-medium px-4 mb-2">"Fragancias que dejan huella"</h2>
                 </div>
 
@@ -226,11 +226,11 @@
                 
                 <div class="flex flex-col items-center mt-3 z-10">
                     <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-gold shadow-md bg-black mb-1 flex items-center justify-center relative">
-                        <!-- LOGO VECTORIAL EN MINIATURA PARA EL REVERSO -->
+                        <!-- MINIATURA DEL LOGO VECTORIAL -->
                         <svg id="svg-logo-back" viewBox="0 0 500 500" class="absolute inset-0 w-full h-full p-1 z-0">
                             <!-- Fondo Negro -->
                             <rect width="100%" height="100%" fill="#000000"/>
-                            <!-- Arco dorado dividido -->
+                            <!-- Arco dorado -->
                             <path d="M 125 210 A 160 160 0 1 1 375 210" fill="none" stroke="#cca43b" stroke-width="4.5"/>
                             <path d="M 375 290 A 160 160 0 1 1 125 290" fill="none" stroke="#cca43b" stroke-width="4.5"/>
                             <!-- Botella simplificada -->
@@ -239,11 +239,10 @@
                                 <rect x="236" y="147" width="28" height="18" rx="2" fill="#cca43b" />
                                 <ellipse cx="250" cy="118" rx="24" ry="18" fill="#cca43b" />
                             </g>
-                            <!-- Texto -->
                             <text x="250" y="380" font-family="'Playfair Display', serif" font-size="52" font-weight="bold" fill="#cca43b" text-anchor="middle">Zafiro</text>
                         </svg>
 
-                        <!-- IMAGEN REAL EN MINIATURA (Con fallback automático) -->
+                        <!-- MINIATURA DE LA IMAGEN REAL -->
                         <img src="Yellow Black Minimalist Perfume Logo.jpg" alt="Zafiro Perfumería Logo" class="absolute inset-0 w-full h-full object-cover z-10 opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); document.getElementById('svg-logo-back').classList.add('hidden');" onerror="this.style.display='none';">
                     </div>
                     <span class="font-serif text-md font-bold tracking-wide text-sapphire">Zafiro Perfumería</span>
@@ -293,8 +292,8 @@
         </div>
     </div>
 
-    <div class="w-full max-w-[360px] flex flex-col gap-3 mb-12">
-        <a href="https://wa.me/573136725316?text=Hola,%20vi%20tu%20tarjeta%20digital.%20Me%20gustar%C3%ADa%20conocer%20la%20variedad%20de%20perfumes%20que%20tienen%20disponibles." target="_blank" class="w-full flex items-center justify-center py-3.5 bg-emerald-600 hover:bg-emerald-500 active:translate-y-[1px] transition-all rounded-xl text-sm font-semibold tracking-wider text-white shadow-lg shadow-emerald-950/40 gap-2">
+    <div class="w-full max-w-[360px] flex flex-col gap-3 mb-12 text-center">
+        <a href="https://wa.me/573136725316?text=Hola%20Zafiro%20Perfumería!%20💎%20Vi%20tu%20tarjeta%20digital%20y%20me%20gustaría%20solicitar%20asesoría%20sobre%20tus%20perfumes%20disponibles.%20✨" target="_blank" class="w-full flex items-center justify-center py-3.5 bg-emerald-600 hover:bg-emerald-500 active:translate-y-[1px] transition-all rounded-xl text-sm font-semibold tracking-wider text-white shadow-lg shadow-emerald-950/40 gap-2">
             <i class="fa-brands fa-whatsapp text-lg"></i> Escríbenos por WhatsApp
         </a>
         <div class="grid grid-cols-2 gap-3">
@@ -307,16 +306,16 @@
         </div>
     </div>
 
-    <div class="w-full max-w-[500px] bg-slate-900/60 backdrop-blur-md rounded-3xl p-5 border border-white/10 shadow-2xl">
+    <div class="w-full max-w-[650px] bg-slate-900/60 backdrop-blur-md rounded-3xl p-5 border border-white/10 shadow-2xl">
         <div class="text-center mb-5">
             <i class="fa-solid fa-gem text-gold text-2xl mb-2"></i>
             <h2 class="font-serif text-2xl text-white font-bold">Catálogo de Productos</h2>
-            <p class="text-xs text-slate-400 mt-1">Explora nuestra colección. Toca para consultar existencias.</p>
+            <p class="text-xs text-slate-400 mt-1">Nuestra colección completa de fragancias de lujo</p>
         </div>
 
         <!-- Buscador de Perfumes -->
         <div class="relative mb-5">
-            <input type="text" id="searchBar" onkeyup="filterPerfumes()" placeholder="Buscar tu perfume favorito..." class="w-full py-2.5 pl-10 pr-4 bg-slate-950/80 border border-white/10 rounded-xl text-sm focus:outline-none focus:border-gold/50 text-slate-200 placeholder-slate-500 transition-colors">
+            <input type="text" id="searchBar" onkeyup="filterPerfumes()" placeholder="Buscar perfume por marca, nombre o notas..." class="w-full py-2.5 pl-10 pr-4 bg-slate-950/80 border border-white/10 rounded-xl text-sm focus:outline-none focus:border-gold/50 text-slate-200 placeholder-slate-500 transition-colors">
             <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-500 text-xs"></i>
         </div>
 
@@ -334,8 +333,10 @@
         </div>
 
         <!-- Contenedores de Listados -->
+        
         <!-- CATEGORÍA: HOMBRE -->
-        <div id="cat-hombre" class="perfume-category space-y-4 max-h-[460px] overflow-y-auto pr-1 custom-scrollbar">
+        <div id="cat-hombre" class="perfume-category space-y-4 max-h-[500px] overflow-y-auto pr-1 custom-scrollbar">
+            
             <!-- Davidoff Cool Water -->
             <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
                 <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-900 to-sky-950 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
@@ -500,10 +501,71 @@
                     <i class="fa-solid fa-cart-shopping text-sm"></i>
                 </button>
             </div>
+
+            <!-- NUEVO: Asad -->
+            <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-950 to-neutral-900 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                    <i class="fa-solid fa-fire text-2xl text-amber-500"></i>
+                </div>
+                <div class="flex-1 text-left min-w-0">
+                    <span class="text-[9px] text-gold font-bold uppercase tracking-wider block">Lattafa</span>
+                    <h3 class="text-sm font-bold text-white leading-tight truncate">Asad</h3>
+                    <p class="text-xs text-slate-400 leading-normal mt-0.5">Elegante, misterioso y potente. Notas de especias, café y vainilla.</p>
+                </div>
+                <button onclick="orderPerfume('Lattafa', 'Asad', 'Hombre')" class="w-9 h-9 rounded-xl bg-gold/10 text-gold hover:bg-gold hover:text-sapphire flex items-center justify-center transition-colors shadow shrink-0">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </button>
+            </div>
+
+            <!-- NUEVO: 9PM -->
+            <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-950 to-slate-900 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                    <i class="fa-solid fa-moon text-2xl text-violet-400"></i>
+                </div>
+                <div class="flex-1 text-left min-w-0">
+                    <span class="text-[9px] text-gold font-bold uppercase tracking-wider block">Afnan</span>
+                    <h3 class="text-sm font-bold text-white leading-tight truncate">9PM</h3>
+                    <p class="text-xs text-slate-400 leading-normal mt-0.5">El rey de la noche. Dulce, magnético y seductor con manzana, canela y vainilla.</p>
+                </div>
+                <button onclick="orderPerfume('Afnan', '9PM', 'Hombre')" class="w-9 h-9 rounded-xl bg-gold/10 text-gold hover:bg-gold hover:text-sapphire flex items-center justify-center transition-colors shadow shrink-0">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </button>
+            </div>
+
+            <!-- NUEVO: 212 Men -->
+            <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                    <i class="fa-solid fa-city text-2xl text-slate-300"></i>
+                </div>
+                <div class="flex-1 text-left min-w-0">
+                    <span class="text-[9px] text-gold font-bold uppercase tracking-wider block">Carolina Herrera</span>
+                    <h3 class="text-sm font-bold text-white leading-tight truncate">212 Men</h3>
+                    <p class="text-xs text-slate-400 leading-normal mt-0.5">Fresco, limpio y masculino. Un clásico urbano con notas cítricas, verdes y amaderadas.</p>
+                </div>
+                <button onclick="orderPerfume('Carolina Herrera', '212 Men', 'Hombre')" class="w-9 h-9 rounded-xl bg-gold/10 text-gold hover:bg-gold hover:text-sapphire flex items-center justify-center transition-colors shadow shrink-0">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </button>
+            </div>
+
+            <!-- NUEVO: Lapidus -->
+            <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-950 to-stone-900 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                    <i class="fa-solid fa-shield-halved text-2xl text-amber-700"></i>
+                </div>
+                <div class="flex-1 text-left min-w-0">
+                    <span class="text-[9px] text-gold font-bold uppercase tracking-wider block">Ted Lapidus</span>
+                    <h3 class="text-sm font-bold text-white leading-tight truncate">Lapidus</h3>
+                    <p class="text-xs text-slate-400 leading-normal mt-0.5">Fuerte, clásico y con carácter. Aroma intenso a miel, tabaco y maderas de larga duración.</p>
+                </div>
+                <button onclick="orderPerfume('Ted Lapidus', 'Lapidus', 'Hombre')" class="w-9 h-9 rounded-xl bg-gold/10 text-gold hover:bg-gold hover:text-sapphire flex items-center justify-center transition-colors shadow shrink-0">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </button>
+            </div>
         </div>
 
         <!-- CATEGORÍA: MUJER -->
-        <div id="cat-mujer" class="perfume-category space-y-4 max-h-[460px] overflow-y-auto pr-1 hidden custom-scrollbar">
+        <div id="cat-mujer" class="perfume-category space-y-4 max-h-[500px] overflow-y-auto pr-1 hidden custom-scrollbar">
+            
             <!-- Aqua Kiss -->
             <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
                 <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-teal-900 to-cyan-950 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
@@ -551,7 +613,7 @@
 
             <!-- 360 Coral -->
             <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
-                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-orange-950 to-rose-950 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-orange-900 to-rose-950 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
                     <i class="fa-solid fa-sun text-2xl text-orange-400"></i>
                 </div>
                 <div class="flex-1 text-left min-w-0">
@@ -623,10 +685,41 @@
                     <i class="fa-solid fa-cart-shopping text-sm"></i>
                 </button>
             </div>
+
+            <!-- NUEVO: Light Blue -->
+            <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-900 to-sky-950 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                    <i class="fa-solid fa-water text-2xl text-cyan-400"></i>
+                </div>
+                <div class="flex-1 text-left min-w-0">
+                    <span class="text-[9px] text-gold font-bold uppercase tracking-wider block">Dolce & Gabbana</span>
+                    <h3 class="text-sm font-bold text-white leading-tight truncate">Light Blue</h3>
+                    <p class="text-xs text-slate-400 leading-normal mt-0.5">Frescura marina y cítrica total. Ideal para el calor y para oler a limpio todo el día.</p>
+                </div>
+                <button onclick="orderPerfume('Dolce & Gabbana', 'Light Blue', 'Mujer')" class="w-9 h-9 rounded-xl bg-gold/10 text-gold hover:bg-gold hover:text-sapphire flex items-center justify-center transition-colors shadow shrink-0">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </button>
+            </div>
+
+            <!-- NUEVO: Yara -->
+            <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-pink-800 to-rose-950 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                    <i class="fa-solid fa-wand-magic-sparkles text-2xl text-pink-300"></i>
+                </div>
+                <div class="flex-1 text-left min-w-0">
+                    <span class="text-[9px] text-gold font-bold uppercase tracking-wider block">Lattafa</span>
+                    <h3 class="text-sm font-bold text-white leading-tight truncate">Yara</h3>
+                    <p class="text-xs text-slate-400 leading-normal mt-0.5">Dulce, cremoso y femenino. Huele delicioso a batido de fresas con vainilla y almizcle.</p>
+                </div>
+                <button onclick="orderPerfume('Lattafa', 'Yara', 'Mujer')" class="w-9 h-9 rounded-xl bg-gold/10 text-gold hover:bg-gold hover:text-sapphire flex items-center justify-center transition-colors shadow shrink-0">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </button>
+            </div>
         </div>
 
         <!-- CATEGORÍA: UNISEX -->
-        <div id="cat-unisex" class="perfume-category space-y-4 max-h-[460px] overflow-y-auto pr-1 hidden custom-scrollbar">
+        <div id="cat-unisex" class="perfume-category space-y-4 max-h-[500px] overflow-y-auto pr-1 hidden custom-scrollbar">
+            
             <!-- Bond No. 9 -->
             <div class="perfume-card flex bg-slate-950/40 border border-white/5 rounded-2xl p-3.5 gap-4 items-center hover:border-gold/20 transition-all">
                 <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-700 to-yellow-950 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
@@ -705,13 +798,13 @@
         </div>
     </div>
 
-    <!-- Footnote -->
+    <!-- Pie de Página -->
     <div class="mt-12 text-center text-[10px] text-slate-500 tracking-wider">
         © 2026 Zafiro Perfumería. Todos los derechos reservados.
     </div>
 
     <script>
-        // Función para rotar la tarjeta 3D
+        // Función para rotar la tarjeta 3D interactiva
         function flipCard() {
             const card = document.getElementById('card');
             card.classList.toggle('flipped');
@@ -738,7 +831,7 @@
             activeBtn.className = "flex-1 py-2 text-xs font-bold tracking-wider uppercase rounded-lg transition-all bg-gold text-sapphire shadow";
         }
 
-        // Filtro buscador en tiempo real
+        // Filtro buscador en tiempo real por marcas, nombres o descripciones
         function filterPerfumes() {
             const query = document.getElementById('searchBar').value.toLowerCase();
             const cards = document.querySelectorAll('.perfume-card');
@@ -756,14 +849,14 @@
             });
         }
 
-        // Acción de cotización inteligente directa por WhatsApp
+        // Cotización inteligente por WhatsApp dirigida al número de contacto de Zafiro Perfumería
         function orderPerfume(brand, name, category) {
             const phoneNumber = "573136725316";
             const baseMessage = `Hola Zafiro Perfumería! 💎 Vi tu catálogo digital y me gustaría solicitar información o consultar disponibilidad del perfume *${brand} - ${name}* (${category}). ✨`;
             const encodedMessage = encodeURIComponent(baseMessage);
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
             
-            // Redirección directa a WhatsApp
+            // Redirección directa a WhatsApp en pestaña nueva
             window.open(whatsappUrl, '_blank');
         }
     </script>
